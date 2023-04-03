@@ -34,11 +34,10 @@ export class GifsService {
     .set('api_key', this.apiKey)
     .set('limit', '10')
     .set('q', query);
-    
+
     this.http
       .get<SearchGifsResponse>(`${this.servicioUrl}/search`, {params})
       .subscribe((resp) => {
-        console.log(resp.data);
         this.resultados = resp.data;
         localStorage.setItem('resultados', JSON.stringify(this.resultados));
       });
